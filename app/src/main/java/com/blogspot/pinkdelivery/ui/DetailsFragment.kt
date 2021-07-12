@@ -8,11 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.blogspot.pinkdelivery.R
 import com.blogspot.pinkdelivery.databinding.DetailsFragmentBinding
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class DetailsFragment : Fragment() {
@@ -22,7 +19,7 @@ class DetailsFragment : Fragment() {
     }
 
     private lateinit var binding: DetailsFragmentBinding
-    private val animalsArray = arrayOf(
+    private val products = arrayOf(
         "All",
         "New",
         "Fruits",
@@ -42,25 +39,24 @@ class DetailsFragment : Fragment() {
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = animalsArray[position]
+            tab.text = products[position]
         }.attach()
         return binding.root
     }
+    class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+        FragmentStateAdapter(fragmentManager, lifecycle) {
 
-}
-
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
-    FragmentStateAdapter(fragmentManager, lifecycle) {
-
-    override fun getItemCount(): Int {
-        return 5
-    }
-
-    override fun createFragment(position: Int): Fragment {
-        when (position) {
-            0 -> return AllFragment()
-            1 -> return AllFragment()
+        override fun getItemCount(): Int {
+            return 5
         }
-        return AllFragment()
+
+        override fun createFragment(position: Int): Fragment {
+            when (position) {
+                0 -> return AllFragment()
+            }
+            return BlankFragment()
+        }
     }
+
 }
+

@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">PinkDelivery</string>
+    <string name="app_name">Pink Delivery</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_0">0</string>
+    <string name="dash">-</string>
+    <string name="plus">+</string>
 </resources>
