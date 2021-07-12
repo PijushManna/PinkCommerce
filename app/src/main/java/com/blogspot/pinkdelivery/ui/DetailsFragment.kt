@@ -27,6 +27,7 @@ class DetailsFragment : Fragment() {
         "New",
         "Fruits",
         "Grocery",
+        "Stationary"
     )
 
     override fun onCreateView(
@@ -48,12 +49,11 @@ class DetailsFragment : Fragment() {
 
 }
 
-private const val NUM_TABS = 3
-public class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
+class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
     override fun getItemCount(): Int {
-        return NUM_TABS
+        return 5
     }
 
     override fun createFragment(position: Int): Fragment {

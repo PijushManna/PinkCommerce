@@ -6,27 +6,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.pinkdelivery.R
 
 class AllFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AllFragment()
+    private val viewModel: AllViewModel by lazy {
+        ViewModelProvider(this).get(AllViewModel::class.java)
     }
-
-    private lateinit var viewModel: AllViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.all_fragment, container, false)
-    }
+        val v = inflater.inflate(R.layout.all_fragment, container, false)
+        val rcrItems:RecyclerView = v.findViewById(R.id.rcr_items)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AllViewModel::class.java)
-        // TODO: Use the ViewModel
+        return v
     }
 
 }
